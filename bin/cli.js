@@ -22,11 +22,11 @@ program
 })
 // 配置版本号信息
 program
- .version(`v${require('../package.json').version}`,'-v, -V,--version')
- .usage('<command> [option]')  
+  .version(`v${require('../package.json').version}`,'-v, -V,--version')
+  .usage('<command> [option]')  
 
    // 监听 --help 执行
- program
+program
   .on('--help', () => {
     //  打印logo
     // utils.printLogo()
