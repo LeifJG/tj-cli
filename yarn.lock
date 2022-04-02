@@ -162,7 +162,7 @@ defaults@^1.0.3:
 
 ejs@^3.1.6:
   version "3.1.6"
-  resolved "http://129.211.144.191/ejs/-/ejs-3.1.6.tgz#5bfd0a0689743bb5268b3550cceeebbc1702822a"
+  resolved "https://registry.npmmirror.com/ejs/download/ejs-3.1.6.tgz#5bfd0a0689743bb5268b3550cceeebbc1702822a"
   integrity sha1-W/0KBol0O7UmizVQzO7rvBcCgio=
   dependencies:
     jake "^10.6.1"
