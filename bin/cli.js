@@ -3,22 +3,27 @@
 const program = require('commander')
 const chalk = require('chalk') //颜色
 const utils = require('../utils')
+const api = require('../lib/api')
 // 定义命令和参数
 program
-  .command('create <projectName>')
+  .command('create <templateName> <projectName>')
   .description('create a new project')
   // -f or --force 为强制创建，如果创建的目录存在则直接覆盖
   .option('-f, --force', 'overwrite target directory if it exist')
-  .action((name, options) => {
-    require('../lib/create.js')(name,options)
+  .option('-t, --template', 'overwrite target directory if it exist')
+  .action(({templateName, projectName}, options) => {
+    require('../lib/create.js')({templateName, projectName},options)
   })
 
 // 定义查看模板列表
 program
 .command('list')
 .description('查看模板列表')
-.action((name, options) => {
-  utils.printTemplateLists()
+.action(async (name, options) => {
+  const list = await api.getTmpList()
+  list.forEach(tmp => {
+    console.log(`${tmp.name}：${tmp.readme || tmp.url}`)
+  });
 })
 // 配置版本号信息
 program
