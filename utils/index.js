@@ -1,5 +1,4 @@
 const figlet =require('figlet')
-const fs = require('fs')
 const path = require('path')
 const chalk = require('chalk') 
 
@@ -19,16 +18,9 @@ module.exports = {
       )
     )
   },
-  // 打印模板列表 这里就写假数据 
-  printTemplateLists () {
-    console.log(chalk.green('后台管理系统'))
-    console.log(chalk.green('小程序'))
-    console.log(chalk.green('H5'))
-    console.log(chalk.green('node'))
-    console.log(chalk.green('nuxt'))
-  },
   // 查找目标目录内的指定文件
   findFiles(filePath, fileName) { // 用于查找目标路径内的所有 .tpl 文件
+    const fs = require('fs')
     const tplList = []
     const findTplPath = (filePath) => {
       const target = eval(`/${fileName}/`)
@@ -46,5 +38,29 @@ module.exports = {
     }
     findTplPath(filePath)
     return tplList
+  },
+  // 删除文件
+  async deleteDir(directoryPath) {
+    if (!require('fs').existsSync(directoryPath)) {
+      return
+    }
+    const fs = require('fs').promises
+    async function rmdirAsync (directoryPath) {
+      try {
+        let stat = await fs.stat(directoryPath)
+        if (stat.isFile()) {
+          await fs.unlink(directoryPath)
+        } else {
+          let dirs = await fs.readdir(directoryPath)
+          // 递归删除文件夹内容(文件/文件夹)
+          dirs = dirs.map(dir => rmdirAsync(path.join(directoryPath, dir)))
+          await Promise.all(dirs)
+          await fs.rmdir(directoryPath)
+        }
+      } catch (e) {
+        console.error(e)
+      }
+    }
+    await rmdirAsync(directoryPath)
   }
 }

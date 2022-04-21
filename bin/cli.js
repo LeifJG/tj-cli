@@ -11,8 +11,8 @@ program
   // -f or --force 为强制创建，如果创建的目录存在则直接覆盖
   .option('-f, --force', 'overwrite target directory if it exist')
   .option('-t, --template', 'overwrite target directory if it exist')
-  .action(({templateName, projectName}, options) => {
-    require('../lib/create.js')({templateName, projectName},options)
+  .action((templateName, projectName, options) => {
+    require('../lib/create.js')({templateName, projectName}, options)
   })
 
 // 定义查看模板列表
