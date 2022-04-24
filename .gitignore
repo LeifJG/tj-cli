@@ -1,3 +1,4 @@
 package-lock.json
 node_modules/
 template/admin-vue2/
+.template/
