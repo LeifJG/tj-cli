@@ -65,16 +65,21 @@ module.exports = {
   },
   copyDir(srcDir, desDir) {
     const fs = require('fs')
+    if (!fs.existsSync(desDir)) {
+      fs.mkdirSync(desDir, (err) => {
+        if (err) console.log('文件夹创建失败：',err)
+      })
+    }
     fs.readdir(srcDir, { withFileTypes: true }, (err, files) => {
       for (const file of files) {
         //判断是否为文件夹
         if (file.isDirectory()) {
           const dirS = path.resolve(srcDir, file.name)
           const dirD = path.resolve(desDir, file.name)
-          //判断是否存在dirD文件夹
+          //判断是否存在dirD文件夹 不存在就创建了再重新调
           if (!fs.existsSync(dirD)) {
-            fs.mkdir(dirD, (err) => {
-              if (err) console.log(err)
+            fs.mkdirSync(dirD, (err) => {
+              if (err) console.log('文件夹创建失败：', err)
             })
           }
           this.copyDir(dirS, dirD)
@@ -82,7 +87,6 @@ module.exports = {
           const srcFile = path.resolve(srcDir, file.name)
           const desFile = path.resolve(desDir, file.name)
           fs.copyFileSync(srcFile, desFile)
-          console.log(file.name + ' 拷贝成功')
         }
       }
     })
