@@ -19,7 +19,7 @@ module.exports = {
     )
   },
   // 查找目标目录内的指定文件
-  findFiles(filePath, fileName) { // 用于查找目标路径内的所有 .tpl 文件
+  findFiles(filePath, fileName) { // 用于查找目标路径内的所有目标文件 支持传入正则
     const fs = require('fs')
     const tplList = []
     const findTplPath = (filePath) => {
@@ -62,5 +62,29 @@ module.exports = {
       }
     }
     await rmdirAsync(directoryPath)
+  },
+  copyDir(srcDir, desDir) {
+    const fs = require('fs')
+    fs.readdir(srcDir, { withFileTypes: true }, (err, files) => {
+      for (const file of files) {
+        //判断是否为文件夹
+        if (file.isDirectory()) {
+          const dirS = path.resolve(srcDir, file.name)
+          const dirD = path.resolve(desDir, file.name)
+          //判断是否存在dirD文件夹
+          if (!fs.existsSync(dirD)) {
+            fs.mkdir(dirD, (err) => {
+              if (err) console.log(err)
+            })
+          }
+          this.copyDir(dirS, dirD)
+        } else {
+          const srcFile = path.resolve(srcDir, file.name)
+          const desFile = path.resolve(desDir, file.name)
+          fs.copyFileSync(srcFile, desFile)
+          console.log(file.name + ' 拷贝成功')
+        }
+      }
+    })
   }
 }
