@@ -6,13 +6,13 @@ const utils = require('../utils')
 const api = require('../lib/api')
 // 定义命令和参数
 program
-  .command('create <templateName> <projectName>')
+  .command('create <projectName>')
   .description('create a new project')
   // -f or --force 为强制创建，如果创建的目录存在则直接覆盖
   .option('-f, --force', 'overwrite target directory if it exist')
   .option('-t, --template', 'overwrite target directory if it exist')
-  .action((templateName, projectName, options) => {
-    require('../lib/create.js')({templateName, projectName}, options)
+  .action(( projectName, options) => {
+    require('../lib/create.js')({ projectName}, options)
   })
 
 // 定义查看模板列表
@@ -20,7 +20,7 @@ program
 .command('list')
 .description('查看模板列表')
 .action(async (name, options) => {
-  const list = await api.getTmpList()
+  const list = await api.getTplList()
   list.forEach(tmp => {
     console.log(`${tmp.name}：${tmp.readme || tmp.url}`)
   });
