@@ -1,13 +1,13 @@
 {
   "name": "tj",
   "version": "1.0.0",
-  "description": "",
+  "description": "cli",
   "main": "index.js",
   "bin": "./bin/cli.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "yunji-web",
+  "author": "tj-fe",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.24.0",
@@ -19,5 +19,6 @@
     "fs-extra": "^10.0.0",
     "inquirer": "^8.2.0",
     "ora": "5.4.1"
-  }
+  },
+  "keywords": ["cli", "js"]
 }
