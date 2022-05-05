@@ -1,5 +1,5 @@
 {
-  "name": "tj",
+  "name": "@tj/tj",
   "version": "1.0.0",
   "description": "cli",
   "main": "index.js",
@@ -20,5 +20,9 @@
     "inquirer": "^8.2.0",
     "ora": "5.4.1"
   },
-  "keywords": ["cli", "js"]
+  "keywords": [
+    "cli",
+    "js",
+    "tianji"
+  ]
 }
