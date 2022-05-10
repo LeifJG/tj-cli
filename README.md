@@ -1,10 +1,23 @@
- commander 命令行自定义指令 
- inquirer  命令行询问用户问题，记录回答结果 
- chalk     控制台输出内容样式美化 
- ora       控制台 
- loading   样式 
- figlet    控制台打印 
- logo easy-table    控制台输出表格 
- download-git-repo  下载远程模版 
- fs-extra    系统fs模块的扩展，提供了更多便利的 API，
-             并继承了fs模块的 API cross-spawn支持跨平台调用系统上的命令
+# tj-cli
+
+天鸡cli，一个使用简单，不限模板类型的脚手架。
+
+## 安装
+
+- NodeJS 10+： <https://nodejs.org/en/>
+- yarn：<https://yarn.bootcss.com/>
+
+```bash
+yarn global add @lijg/tj
+```
+
+## 创建项目
+
+```bash
+cd ~/project # 存放项目的路径
+tj create <project name> # <project name> 替换为项目名称
+```
+
+## 其他
+
+- [增加自定义项目模板说明](https://gitlab.yunjiglobal.com/fe/tj-cli/blob/master/template.md)
