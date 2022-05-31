@@ -20,4 +20,4 @@ tj create <project name> # <project name> 替换为项目名称
 
 ## 其他
 
-- [增加自定义项目模板说明](https://gitlab.yunjiglobal.com/fe/tj-cli/blob/master/template.md)
+- [增加自定义项目模板说明](https://github.com/LeifJG/tj-cli/blob/master/template.md)
