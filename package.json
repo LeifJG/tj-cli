@@ -20,6 +20,11 @@
     "inquirer": "^8.2.0",
     "ora": "5.4.1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeifJG/tj-cli.git"
+  },
+  "homepage": "https://github.com/LeifJG/tj-cli/blob/master/README.md",
   "keywords": [
     "cli",
     "js",
